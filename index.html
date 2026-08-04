@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alex Rivera — Product Designer</title>
+    <meta name="description" content="Product designer solving real problems through thoughtful, human-centered design." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+              sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              ink: {
+                950: '#0a0c0f',
+                900: '#0e1116',
+                850: '#13161c',
+                800: '#181c23',
+                700: '#222730',
+                600: '#2e343f',
+                500: '#3f4651',
+              },
+              paper: {
+                50: '#fbfaf8',
+                100: '#f6f4ef',
+                200: '#eeeae1',
+                300: '#e2dccf',
+              },
+              accent: {
+                DEFAULT: '#c9a86a',
+                soft: '#d8bd8a',
+                deep: '#a8884f',
+              },
+            },
+            keyframes: {
+              fadeUp: {
+                '0%': { opacity: '0', transform: 'translateY(16px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              scaleIn: {
+                '0%': { opacity: '0', transform: 'scale(0.97)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+            },
+            animation: {
+              fadeUp: 'fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both',
+              fadeIn: 'fadeIn 0.6s ease both',
+              scaleIn: 'scaleIn 0.4s cubic-bezier(0.22,1,0.36,1) both',
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { font-feature-settings: "ss01", "cv01"; }
+      ::selection { background: rgba(201,168,106,0.28); }
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s cubic-bezier(0.22,1,0.36,1), transform 0.8s cubic-bezier(0.22,1,0.36,1); }
+      .reveal.in { opacity: 1; transform: none; }
+      .reveal-delay-1 { transition-delay: 0.08s; }
+      .reveal-delay-2 { transition-delay: 0.16s; }
+      .reveal-delay-3 { transition-delay: 0.24s; }
+      .reveal-delay-4 { transition-delay: 0.32s; }
+      .theme-transition, .theme-transition * { transition: background-color 0.5s ease, border-color 0.5s ease, color 0.4s ease; }
+      .card-hover { transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease, border-color 0.4s ease; }
+      .card-hover:hover { transform: translateY(-4px); }
+      .link-underline { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-position: 0 100%; background-repeat: no-repeat; transition: background-size 0.4s ease; }
+      .link-underline:hover { background-size: 100% 1px; }
+      .modal-scroll::-webkit-scrollbar { width: 8px; }
+      .modal-scroll::-webkit-scrollbar-thumb { background: rgba(120,120,120,0.3); border-radius: 4px; }
+      @media (prefers-reduced-motion: reduce) {
+        .reveal { opacity: 1; transform: none; transition: none; }
+        html { scroll-behavior: auto; }
+      }
+    </style>
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+  <body class="theme-transition bg-paper-50 dark:bg-ink-950 text-ink-900 dark:text-paper-100 font-sans antialiased selection:bg-accent/30">
+
+    <!-- NAVBAR -->
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+      <nav class="mx-auto max-w-6xl px-5 sm:px-8">
+        <div class="mt-4 flex items-center justify-between rounded-2xl border border-ink-700/40 dark:border-ink-700/60 bg-paper-50/70 dark:bg-ink-900/60 backdrop-blur-xl px-4 sm:px-6 py-3 transition-all duration-500" id="nav-inner">
+          <a href="#top" class="flex items-center gap-2.5 group">
+            <span class="grid place-items-center h-8 w-8 rounded-lg bg-ink-900 dark:bg-paper-100 text-paper-100 dark:text-ink-900 font-display text-lg leading-none">a</span>
+            <span class="font-display text-lg tracking-tight">Alex Rivera</span>
+          </a>
+          <div class="hidden md:flex items-center gap-8 text-sm text-ink-700 dark:text-paper-200/80">
+            <a href="#work" class="nav-link link-underline">Work</a>
+            <a href="#approach" class="nav-link link-underline">Approach</a>
+            <a href="#about" class="nav-link link-underline">About</a>
+            <a href="#contact" class="nav-link link-underline">Contact</a>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="theme-toggle" aria-label="Toggle color theme" class="grid place-items-center h-9 w-9 rounded-lg border border-ink-700/40 dark:border-ink-700/60 hover:bg-ink-800/40 dark:hover:bg-ink-800/60 transition-colors">
+              <svg class="hidden dark:block h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+              <svg class="block dark:hidden h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke-linejoin="round"/></svg>
+            </button>
+            <a href="#contact" class="hidden sm:inline-flex items-center text-sm font-medium px-4 py-2 rounded-lg bg-ink-900 dark:bg-paper-100 text-paper-100 dark:text-ink-900 hover:opacity-90 transition-opacity">Let's talk</a>
+            <button id="menu-btn" aria-label="Open menu" class="md:hidden grid place-items-center h-9 w-9 rounded-lg border border-ink-700/40 dark:border-ink-700/60">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- mobile menu -->
+      <div id="mobile-menu" class="md:hidden hidden px-5 mt-2">
+        <div class="rounded-2xl border border-ink-700/40 dark:border-ink-700/60 bg-paper-50/90 dark:bg-ink-900/90 backdrop-blur-xl p-2">
+          <a href="#work" class="mob-link block px-4 py-3 rounded-xl hover:bg-ink-800/30 dark:hover:bg-ink-800/50">Work</a>
+          <a href="#approach" class="mob-link block px-4 py-3 rounded-xl hover:bg-ink-800/30 dark:hover:bg-ink-800/50">Approach</a>
+          <a href="#about" class="mob-link block px-4 py-3 rounded-xl hover:bg-ink-800/30 dark:hover:bg-ink-800/50">About</a>
+          <a href="#contact" class="mob-link block px-4 py-3 rounded-xl hover:bg-ink-800/30 dark:hover:bg-ink-800/50">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+
+      <!-- HERO -->
+      <section class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden">
+        <div class="pointer-events-none absolute inset-0 -z-10">
+          <div class="absolute -top-40 -right-32 h-[36rem] w-[36rem] rounded-full bg-accent/10 blur-3xl"></div>
+          <div class="absolute bottom-0 -left-40 h-[28rem] w-[28rem] rounded-full bg-accent/5 blur-3xl"></div>
+        </div>
+        <div class="mx-auto max-w-6xl px-5 sm:px-8 w-full">
+          <div class="reveal in flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-8">
+            <span class="h-px w-10 bg-accent-deep dark:bg-accent"></span>
+            <span>Product Designer · UI/UX · Problem-solver</span>
+          </div>
+          <h1 class="reveal in reveal-delay-1 font-display font-medium tracking-tight text-[2.6rem] leading-[1.05] sm:text-7xl lg:text-[5.4rem] max-w-4xl">
+            I design digital products that <span class="italic text-accent-deep dark:text-accent">solve real problems</span> for real people.
+          </h1>
+          <p class="reveal in reveal-delay-2 mt-8 max-w-xl text-lg text-ink-700 dark:text-paper-200/70 leading-relaxed">
+            I'm Alex — a senior product designer who leads with research, reasons from first principles, and ships work that measurably improves the lives of the people who use it.
+          </p>
+          <div class="reveal in reveal-delay-3 mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="#work" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-ink-900 dark:bg-paper-100 text-paper-100 dark:text-ink-900 font-medium hover:opacity-90 transition-opacity">
+              See how I solve problems
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="#contact" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-ink-700/50 dark:border-ink-600 hover:bg-ink-800/30 dark:hover:bg-ink-800/50 transition-colors font-medium">
+              Let's talk
+            </a>
+          </div>
+          <div class="reveal in reveal-delay-4 mt-20 grid grid-cols-2 sm:grid-cols-4 gap-px max-w-2xl border border-ink-700/30 dark:border-ink-700/50 rounded-2xl overflow-hidden bg-ink-700/20">
+            <div class="bg-paper-50 dark:bg-ink-900 p-5">
+              <div class="font-display text-3xl">9+</div>
+              <div class="text-xs mt-1 text-ink-600 dark:text-paper-200/50">Years designing</div>
+            </div>
+            <div class="bg-paper-50 dark:bg-ink-900 p-5">
+              <div class="font-display text-3xl">40+</div>
+              <div class="text-xs mt-1 text-ink-600 dark:text-paper-200/50">Products shipped</div>
+            </div>
+            <div class="bg-paper-50 dark:bg-ink-900 p-5">
+              <div class="font-display text-3xl">3.2M</div>
+              <div class="text-xs mt-1 text-ink-600 dark:text-paper-200/50">Users impacted</div>
+            </div>
+            <div class="bg-paper-50 dark:bg-ink-900 p-5">
+              <div class="font-display text-3xl">−38%</div>
+              <div class="text-xs mt-1 text-ink-600 dark:text-paper-200/50">Avg. drop-off cut</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SELECTED WORK -->
+      <section id="work" class="py-24 sm:py-32 border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal flex items-end justify-between gap-6 flex-wrap mb-14">
+            <div>
+              <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4">
+                <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+                <span>Selected Work</span>
+              </div>
+              <h2 class="font-display font-medium tracking-tight text-3xl sm:text-5xl max-w-xl">Problems worth solving, and the outcomes they produced.</h2>
+            </div>
+            <p class="text-ink-600 dark:text-paper-200/60 max-w-xs text-sm leading-relaxed">Each case study follows the same arc — the problem, how I understood it, what I designed, and what changed.</p>
+          </div>
+
+          <div id="work-grid" class="grid gap-5"></div>
+        </div>
+      </section>
+
+      <!-- APPROACH -->
+      <section id="approach" class="py-24 sm:py-32 border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal mb-16">
+            <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4">
+              <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+              <span>How I Solve Problems</span>
+            </div>
+            <h2 class="font-display font-medium tracking-tight text-3xl sm:text-5xl max-w-2xl">I understand the problem deeply before I draw a single pixel.</h2>
+            <p class="mt-6 max-w-xl text-ink-600 dark:text-paper-200/60 leading-relaxed">Most design failures start with solving the wrong problem. My process front-loads understanding — listening to users, mapping the system, and defining the real constraint — so the solution that follows is the right one, not just the obvious one.</p>
+          </div>
+
+          <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-ink-700/20 dark:bg-ink-800/60 border border-ink-700/20 dark:border-ink-800/60 rounded-2xl overflow-hidden">
+            <div class="reveal bg-paper-50 dark:bg-ink-900 p-7">
+              <div class="font-display text-accent-deep dark:text-accent text-2xl mb-4">01</div>
+              <h3 class="font-display text-xl mb-2">Listen & Frame</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">User interviews, support tickets, analytics. I turn noise into a sharp problem statement everyone can rally around.</p>
+            </div>
+            <div class="reveal reveal-delay-1 bg-paper-50 dark:bg-ink-900 p-7">
+              <div class="font-display text-accent-deep dark:text-accent text-2xl mb-4">02</div>
+              <h3 class="font-display text-xl mb-2">Map the System</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Flows, journeys, information architecture. I find where the real friction lives — not where the complaints point.</p>
+            </div>
+            <div class="reveal reveal-delay-2 bg-paper-50 dark:bg-ink-900 p-7">
+              <div class="font-display text-accent-deep dark:text-accent text-2xl mb-4">03</div>
+              <h3 class="font-display text-xl mb-2">Design & Test</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Prototype early, test with real users, iterate on evidence. I'd rather be wrong in Figma than in production.</p>
+            </div>
+            <div class="reveal reveal-delay-3 bg-paper-50 dark:bg-ink-900 p-7">
+              <div class="font-display text-accent-deep dark:text-accent text-2xl mb-4">04</div>
+              <h3 class="font-display text-xl mb-2">Ship & Measure</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Partner with engineering to ship, then watch the metrics. A solution isn't done until the number moves.</p>
+            </div>
+          </div>
+
+          <div class="reveal mt-12 grid sm:grid-cols-3 gap-5">
+            <div class="rounded-2xl border border-ink-700/20 dark:border-ink-800/60 p-6">
+              <div class="font-display text-4xl text-accent-deep dark:text-accent">“Why”</div>
+              <p class="text-sm mt-2 text-ink-600 dark:text-paper-200/60 leading-relaxed">before “what” — always.</p>
+            </div>
+            <div class="rounded-2xl border border-ink-700/20 dark:border-ink-800/60 p-6">
+              <div class="font-display text-4xl text-accent-deep dark:text-accent">Evidence</div>
+              <p class="text-sm mt-2 text-ink-600 dark:text-paper-200/60 leading-relaxed">over opinion, every time.</p>
+            </div>
+            <div class="rounded-2xl border border-ink-700/20 dark:border-ink-800/60 p-6">
+              <div class="font-display text-4xl text-accent-deep dark:text-accent">Outcomes</div>
+              <p class="text-sm mt-2 text-ink-600 dark:text-paper-200/60 leading-relaxed">not just outputs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about" class="py-24 sm:py-32 border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="reveal lg:col-span-5">
+              <div class="relative aspect-[4/5] rounded-3xl overflow-hidden border border-ink-700/20 dark:border-ink-800/60 bg-paper-200 dark:bg-ink-800">
+                <img src="https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Alex Rivera, product designer" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-ink-950/40 to-transparent"></div>
+              </div>
+            </div>
+            <div class="reveal reveal-delay-1 lg:col-span-7">
+              <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4">
+                <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+                <span>About</span>
+              </div>
+              <h2 class="font-display font-medium tracking-tight text-3xl sm:text-4xl mb-6">A problem-solver first, a designer second.</h2>
+              <div class="space-y-4 text-ink-700 dark:text-paper-200/70 leading-relaxed max-w-xl">
+                <p>For over nine years I've helped fintech, healthcare, and SaaS teams turn tangled, high-stakes problems into products people actually understand. I'm happiest in the messy middle — the interviews, the edge cases, the trade-offs — where good design is really decided.</p>
+                <p>I believe the best design is invisible: it removes friction so quietly that people simply get done what they came to do. My work lives at the intersection of research, systems thinking, and craft, and I measure success in outcomes — drop-off reduced, tasks completed, confidence restored.</p>
+                <p>When I'm not designing, I write about design process, mentor early-career designers, and take very long walks with a very opinionated dog.</p>
+              </div>
+              <div class="mt-8 flex flex-wrap gap-2">
+                <span class="text-xs px-3 py-1.5 rounded-full border border-ink-700/30 dark:border-ink-700/50 text-ink-600 dark:text-paper-200/60">Based in Lisbon · Remote worldwide</span>
+                <span class="text-xs px-3 py-1.5 rounded-full border border-ink-700/30 dark:border-ink-700/50 text-ink-600 dark:text-paper-200/60">Available Q3 2026</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS & TOOLS -->
+      <section id="skills" class="py-24 sm:py-32 border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal mb-14">
+            <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4">
+              <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+              <span>Skills & Tools</span>
+            </div>
+            <h2 class="font-display font-medium tracking-tight text-3xl sm:text-5xl max-w-2xl">Capabilities built to solve, not just to make.</h2>
+          </div>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-ink-700/20 dark:bg-ink-800/60 border border-ink-700/20 dark:border-ink-800/60 rounded-2xl overflow-hidden">
+            <div class="reveal bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Research & Discovery</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Interviews, usability tests, journey mapping, analytics review — finding the real problem.</p>
+            </div>
+            <div class="reveal reveal-delay-1 bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Information Architecture</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Structuring complex products so the right thing is obvious and the rare thing is findable.</p>
+            </div>
+            <div class="reveal reveal-delay-2 bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Interaction Design</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Flows, states, and micro-interactions that make products feel calm and trustworthy.</p>
+            </div>
+            <div class="reveal bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Visual Design</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Typography, hierarchy, and color systems with restraint and senior-level polish.</p>
+            </div>
+            <div class="reveal reveal-delay-1 bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Prototyping & Testing</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">High-fidelity prototypes validated with real users before a line of code ships.</p>
+            </div>
+            <div class="reveal reveal-delay-2 bg-paper-50 dark:bg-ink-900 p-7">
+              <h3 class="font-display text-xl mb-1">Design Systems</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">Scalable component libraries and documentation that keep teams fast and consistent.</p>
+            </div>
+          </div>
+
+          <div class="reveal mt-10">
+            <div class="text-xs uppercase tracking-widest text-ink-500 dark:text-paper-200/40 mb-4">Tools</div>
+            <div class="flex flex-wrap gap-2.5">
+              <span class="tool-chip">Figma</span><span class="tool-chip">FigJam</span><span class="tool-chip">Framer</span><span class="tool-chip">Maze</span><span class="tool-chip">Notion</span><span class="tool-chip">Linear</span><span class="tool-chip">Hotjar</span><span class="tool-chip">Amplitude</span><span class="tool-chip">Lottie</span><span class="tool-chip">Storybook</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="py-24 sm:py-32 border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8">
+          <div class="reveal rounded-3xl border border-ink-700/20 dark:border-ink-800/60 bg-paper-100 dark:bg-ink-900 p-8 sm:p-14 relative overflow-hidden">
+            <div class="pointer-events-none absolute -top-24 -right-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"></div>
+            <div class="relative grid lg:grid-cols-2 gap-10 items-center">
+              <div>
+                <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4">
+                  <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+                  <span>Contact</span>
+                </div>
+                <h2 class="font-display font-medium tracking-tight text-3xl sm:text-5xl">Let's solve something meaningful together.</h2>
+                <p class="mt-6 max-w-md text-ink-600 dark:text-paper-200/60 leading-relaxed">If you have a problem worth solving — the messy, high-stakes, real-people-kind — I'd love to hear about it. A quick call is usually the best start.</p>
+              </div>
+              <div class="space-y-3">
+                <a href="mailto:hello@alexrivera.design" class="group flex items-center justify-between gap-4 rounded-2xl border border-ink-700/30 dark:border-ink-700/50 p-5 hover:border-accent transition-colors">
+                  <span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-200/40">Email</span>
+                    <span class="font-display text-lg">hello@alexrivera.design</span>
+                  </span>
+                  <svg class="h-5 w-5 text-ink-500 dark:text-paper-200/40 group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl border border-ink-700/30 dark:border-ink-700/50 p-5 hover:border-accent transition-colors">
+                  <span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-200/40">LinkedIn</span>
+                    <span class="font-display text-lg">/in/alexrivera</span>
+                  </span>
+                  <svg class="h-5 w-5 text-ink-500 dark:text-paper-200/40 group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="#" class="group flex items-center justify-between gap-4 rounded-2xl border border-ink-700/30 dark:border-ink-700/50 p-5 hover:border-accent transition-colors">
+                  <span>
+                    <span class="block text-xs text-ink-500 dark:text-paper-200/40">Read.cv</span>
+                    <span class="font-display text-lg">/alexrivera</span>
+                  </span>
+                  <svg class="h-5 w-5 text-ink-500 dark:text-paper-200/40 group-hover:text-accent transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="border-t border-ink-700/20 dark:border-ink-800/60">
+        <div class="mx-auto max-w-6xl px-5 sm:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-ink-500 dark:text-paper-200/40">
+          <div class="flex items-center gap-2.5">
+            <span class="grid place-items-center h-7 w-7 rounded-lg bg-ink-900 dark:bg-paper-100 text-paper-100 dark:text-ink-900 font-display text-base leading-none">a</span>
+            <span>© 2026 Alex Rivera — designing solutions, not just screens.</span>
+          </div>
+          <div class="flex items-center gap-6">
+            <a href="#work" class="link-underline">Work</a>
+            <a href="#approach" class="link-underline">Approach</a>
+            <a href="#contact" class="link-underline">Contact</a>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- CASE STUDY MODAL -->
+    <div id="modal-root" class="fixed inset-0 z-[60] hidden">
+      <div id="modal-backdrop" class="absolute inset-0 bg-ink-950/60 backdrop-blur-sm opacity-0 transition-opacity duration-300"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center justify-center p-0 sm:p-6">
+        <div id="modal-panel" class="relative w-full sm:max-w-3xl max-h-[92vh] overflow-y-auto modal-scroll rounded-t-3xl sm:rounded-3xl bg-paper-50 dark:bg-ink-900 border border-ink-700/30 dark:border-ink-700/60 shadow-2xl translate-y-4 opacity-0 transition-all duration-400">
+          <button id="modal-close" aria-label="Close case study" class="sticky top-3 ml-auto mr-3 z-10 grid place-items-center h-9 w-9 rounded-full bg-ink-900/5 dark:bg-paper-100/10 hover:bg-ink-900/10 dark:hover:bg-paper-100/20 backdrop-blur transition-colors float-right">
+            <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+          </button>
+          <div id="modal-content" class="px-6 sm:px-10 pb-10 -mt-2"></div>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      .tool-chip { font-size: 0.8rem; padding: 0.4rem 0.9rem; border-radius: 9999px; border: 1px solid; border-color: rgba(46,52,63,0.25); color: #3f4651; }
+      .dark .tool-chip { border-color: rgba(255,255,255,0.12); color: rgba(246,244,239,0.7); }
+      .tool-chip:hover { border-color: #c9a86a; color: #a8884f; }
+    </style>
+
+    <script>
+      const CASE_STUDIES = [
+        {
+          tag: "Fintech",
+          title: "Onboarding that stopped losing customers",
+          summary: "A multi-step KYC flow was shedding 46% of new applicants before they ever saw value.",
+          metric: "−54% drop-off",
+          accent: "from-amber-400/20 to-amber-600/5",
+          problem: "New users abandoned a 9-step identity-verification flow in droves. Analytics showed the cliff at step 4, but no one knew why. The business was burning acquisition spend on people who never converted.",
+          process: "I ran 12 unmoderated tests and 6 interviews with recent drop-offs. The real issue wasn't friction — it was uncertainty. People didn't trust what would happen to their data, and the steps felt arbitrary. I mapped every anxiety point and reframed the flow around reassurance and progress, not just collection.",
+          solution: "A condensed 4-step flow with progressive disclosure, inline context for every sensitive field, a persistent progress indicator, and a plain-language privacy promise. Verification moved to the background where possible, surfaced only when it blocked action.",
+          impact: "Drop-off fell from 46% to 21% in the first 30 days. Time-to-first-value dropped from 6 minutes to under 2. The change paid for itself in recovered acquisition spend within a quarter."
+        },
+        {
+          tag: "Healthcare",
+          title: "An appointment system that worked for everyone",
+          summary: "Older patients and people with disabilities couldn't complete booking without calling in.",
+          metric: "+71% self-serve bookings",
+          accent: "from-emerald-400/20 to-emerald-600/5",
+          problem: "A regional clinic network's online booking was technically functional but practically unusable for the people who needed care most — older patients, low-vision users, and those on shared devices. Call center volume was overwhelming staff.",
+          process: "I conducted accessibility audits against WCAG 2.2 AA, shadowed front-desk staff for two days, and tested with 8 patients aged 62–84. The findings reshaped the brief: the problem wasn't aesthetics, it was legibility, predictability, and trust at every step.",
+          solution: "A high-contrast, large-touch-target interface with a single-column flow, plain language, a 'book for someone else' path, and full keyboard and screen-reader support. Confirmation was unambiguous and printable. Nothing moved without telling the user why.",
+          impact: "Self-serve bookings rose 71%, call center load dropped 34%, and the system passed an independent accessibility audit with zero critical issues. Patient satisfaction scores hit their highest level in five years."
+        },
+        {
+          tag: "SaaS",
+          title: "A dashboard that made complex workflows obvious",
+          summary: "Power users loved the data; everyone else avoided the product entirely.",
+          metric: "+42% weekly active use",
+          accent: "from-sky-400/20 to-sky-600/5",
+          problem: "An analytics platform had grown feature-by-feature into a wall of tables and toggles. Power users thrived; the 80% who weren't power users logged in once and rarely returned. Activation was flat.",
+          process: "I segmented usage data, ran 9 contextual interviews, and built a mental-model map of how different roles actually wanted to work. The insight: people didn't need more features, they needed the product to surface the right thing for their job at the right moment.",
+          solution: "A role-aware home surface with prioritized, explainable insights; a configurable workspace that defaulted sensibly; and a guided first-run that taught by doing rather than by reading. Complex tables stayed available but never as the starting point.",
+          impact: "Weekly active use rose 42%, time-to-first-insight fell from days to minutes, and support tickets tagged 'how do I…' dropped by more than half within two release cycles."
+        },
+        {
+          tag: "Mobile Banking",
+          title: "A banking experience people finished what they started",
+          summary: "Transfers and bill payments were started far more often than they were completed.",
+          metric: "+33% task completion",
+          accent: "from-rose-400/20 to-rose-600/5",
+          problem: "Telemetry showed transfers initiated but abandoned mid-flow at a worrying rate. The bank assumed the UI was fine and users were just 'browsing' — the data said otherwise.",
+          process: "I paired funnel analytics with 10 mobile diary studies. The pattern was clear: people got nervous at the confirmation step. Amounts, recipients, and timing all felt easy to get wrong, and the UI gave no confidence that mistakes were recoverable.",
+          solution: "A calmer confirmation step with a clear, editable summary, a 30-second undo window, and friction-free 'are you sure' that reassured rather than nagged. Biometric re-auth moved to the moment of commitment, not the start of the flow.",
+          impact: "Task completion rose 33%, mid-flow abandonment fell by nearly half, and post-transaction support contacts about 'did it go through?' dropped sharply. Trust, measured in a follow-up survey, rose 19 points."
+        },
+        {
+          tag: "Design Systems",
+          title: "One system that ended inconsistency across products",
+          summary: "Five product teams were shipping five different versions of the same button.",
+          metric: "5 teams → 1 system",
+          accent: "from-violet-400/20 to-violet-600/5",
+          problem: "After years of independent teams, the company's products had drifted into visual and behavioral inconsistency. Designers rebuilt components from scratch, engineers guessed at specs, and customers felt the seams between products.",
+          process: "I audited all five products, catalogued every variant of every core component, and ran cross-team workshops to find the shared truths beneath the drift. The goal wasn't uniformity — it was a common language teams could extend without breaking.",
+          solution: "A token-driven design system in Figma with documented usage principles, accessible defaults, and a contribution model that let teams extend without forking. Paired with a Storybook library so engineering and design stayed in lockstep.",
+          impact: "Five teams converged on one system. New-feature design time fell by an estimated 30%, accessibility regressions became rare, and the company finally looked like one product, not five."
+        }
+      ];
+
+      // Render work cards
+      const grid = document.getElementById("work-grid");
+      grid.innerHTML = CASE_STUDIES.map((c, i) => `
+        <button data-case="${i}" class="case-card card-hover group text-left w-full rounded-2xl border border-ink-700/20 dark:border-ink-800/60 bg-paper-100 dark:bg-ink-900 p-6 sm:p-8 hover:border-accent/60 dark:hover:border-accent/60 hover:shadow-[0_20px_60px_-30px_rgba(201,168,106,0.4)]">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class="relative shrink-0 h-40 sm:h-32 sm:w-56 rounded-xl overflow-hidden bg-gradient-to-br ${c.accent} border border-ink-700/20 dark:border-ink-800/60 grid place-items-center">
+              <span class="font-display text-5xl text-ink-900/15 dark:text-paper-100/15">${String(i+1).padStart(2,'0')}</span>
+              <span class="absolute top-3 left-3 text-[0.65rem] uppercase tracking-widest px-2.5 py-1 rounded-full bg-ink-900/70 dark:bg-paper-100/10 text-paper-100 dark:text-paper-100 backdrop-blur">${c.tag}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-display text-xl sm:text-2xl tracking-tight mb-2">${c.title}</h3>
+              <p class="text-sm text-ink-600 dark:text-paper-200/60 leading-relaxed">${c.summary}</p>
+              <div class="mt-4 flex items-center gap-4 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 text-sm font-medium text-accent-deep dark:text-accent">
+                  <span class="font-display text-base">${c.metric}</span>
+                </span>
+                <span class="text-xs text-ink-500 dark:text-paper-200/40">Read the case study</span>
+                <svg class="h-4 w-4 text-ink-500 dark:text-paper-200/40 group-hover:text-accent group-hover:translate-x-1 transition-all" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+        </button>
+      `).join("");
+
+      // Modal logic
+      const modalRoot = document.getElementById("modal-root");
+      const modalBackdrop = document.getElementById("modal-backdrop");
+      const modalPanel = document.getElementById("modal-panel");
+      const modalContent = document.getElementById("modal-content");
+      let lastFocus = null;
+
+      function openCase(i) {
+        const c = CASE_STUDIES[i];
+        lastFocus = document.activeElement;
+        modalContent.innerHTML = `
+          <div class="flex items-center gap-3 text-sm text-accent-deep dark:text-accent font-medium mb-4 mt-4">
+            <span class="h-px w-8 bg-accent-deep dark:bg-accent"></span>
+            <span>${c.tag} · Case Study</span>
+          </div>
+          <h2 class="font-display text-2xl sm:text-4xl tracking-tight mb-4">${c.title}</h2>
+          <div class="relative h-40 sm:h-52 rounded-2xl overflow-hidden bg-gradient-to-br ${c.accent} border border-ink-700/20 dark:border-ink-800/60 grid place-items-center mb-8">
+            <span class="font-display text-7xl text-ink-900/10 dark:text-paper-100/10">${String(i+1).padStart(2,'0')}</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3 mb-8">
+            <div class="rounded-2xl border border-ink-700/20 dark:border-ink-800/60 p-5">
+              <div class="text-xs uppercase tracking-widest text-ink-500 dark:text-paper-200/40 mb-1">Headline result</div>
+              <div class="font-display text-2xl text-accent-deep dark:text-accent">${c.metric}</div>
+            </div>
+            <div class="rounded-2xl border border-ink-700/20 dark:border-ink-800/60 p-5">
+              <div class="text-xs uppercase tracking-widest text-ink-500 dark:text-paper-200/40 mb-1">The ask</div>
+              <div class="text-sm text-ink-700 dark:text-paper-200/70 leading-relaxed">${c.summary}</div>
+            </div>
+          </div>
+          ${section("The problem", c.problem)}
+          ${section("How I understood it", c.process)}
+          ${section("The solution", c.solution)}
+          ${section("The impact", c.impact)}
+          <div class="mt-8 pt-6 border-t border-ink-700/20 dark:border-ink-800/60 flex items-center justify-between gap-4">
+            <a href="#contact" class="modal-close inline-flex items-center gap-2 text-sm font-medium text-accent-deep dark:text-accent link-underline">Work with me on something like this →</a>
+          </div>
+        `;
+        modalRoot.classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+        requestAnimationFrame(() => {
+          modalBackdrop.style.opacity = "1";
+          modalPanel.style.opacity = "1";
+          modalPanel.style.transform = "translateY(0)";
+        });
+        modalPanel.focus();
+      }
+
+      function section(label, body) {
+        return `
+          <div class="mb-7">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+              <h3 class="font-display text-lg">${label}</h3>
+            </div>
+            <p class="text-ink-700 dark:text-paper-200/70 leading-relaxed pl-4 sm:pl-5 border-l border-ink-700/20 dark:border-ink-800/60">${body}</p>
+          </div>
+        `;
+      }
+
+      function closeCase() {
+        modalBackdrop.style.opacity = "0";
+        modalPanel.style.opacity = "0";
+        modalPanel.style.transform = "translateY(16px)";
+        setTimeout(() => {
+          modalRoot.classList.add("hidden");
+          document.body.style.overflow = "";
+          if (lastFocus) lastFocus.focus();
+        }, 300);
+      }
+
+      document.addEventListener("click", (e) => {
+        const card = e.target.closest(".case-card");
+        if (card) openCase(parseInt(card.dataset.case, 10));
+        if (e.target.closest("#modal-close") || e.target.closest(".modal-close") || e.target === modalBackdrop) closeCase();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !modalRoot.classList.contains("hidden")) closeCase();
+      });
+
+      // Theme toggle
+      const root = document.documentElement;
+      const toggle = document.getElementById("theme-toggle");
+      const saved = localStorage.getItem("theme");
+      if (saved === "light") root.classList.remove("dark");
+      if (saved === "dark") root.classList.add("dark");
+      toggle.addEventListener("click", () => {
+        root.classList.toggle("dark");
+        localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light");
+      });
+
+      // Mobile menu
+      const menu = document.getElementById("mobile-menu");
+      document.getElementById("menu-btn").addEventListener("click", () => menu.classList.toggle("hidden"));
+      document.querySelectorAll(".mob-link").forEach(l => l.addEventListener("click", () => menu.classList.add("hidden")));
+
+      // Nav scroll state
+      const navInner = document.getElementById("nav-inner");
+      const onScroll = () => {
+        if (window.scrollY > 20) {
+          navInner.classList.add("shadow-lg", "shadow-ink-950/5");
+        } else {
+          navInner.classList.remove("shadow-lg", "shadow-ink-950/5");
+        }
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Scroll reveal
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            en.target.classList.add("in");
+            io.unobserve(en.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+      // Active nav link
+      const sections = ["work","approach","about","contact"].map(id => document.getElementById(id));
+      const navLinks = document.querySelectorAll(".nav-link");
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(en => {
+          if (en.isIntersecting) {
+            const id = en.target.id;
+            navLinks.forEach(l => {
+              l.classList.toggle("text-accent-deep", l.getAttribute("href") === "#"+id);
+              l.classList.toggle("dark:text-accent", l.getAttribute("href") === "#"+id);
+            });
+          }
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+      sections.forEach(s => s && spy.observe(s));
+    </script>
+  </body>
+</html>
